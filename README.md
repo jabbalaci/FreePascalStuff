@@ -5,6 +5,8 @@ Tools, helper units, assets for Free Pascal.
 
 ## ptop (autoformatter)
 
+See the folder `ptop/`
+
 `ptop` is a source code formatter that you get
 together with `fpc`. Basic usage:
 
@@ -14,7 +16,7 @@ $ ptop input.pas output.pas
 
 Its default settings are quite strange. For instance,
 it capitalizes the keywords (`begin` becomes `Begin`, etc.).
-I didn't like it so I customized its configuration a bit.
+I didn't like that so I customized its configuration a bit.
 
 * `config.original.cfg`: the default config of ptop.
   You can generate it with `ptop -g config.txt`
@@ -31,7 +33,7 @@ $ ./post_correction.py input.pas output.pas
 To sum up, here are the necessary steps to beautify a source code:
 
 ```bash
-$ TEMP=main.hh6455.pas  # a temporary file
+$ TEMP=temp.hh6455.pas  # a temporary file with a unique name
 $ ptop -c config.cfg input.pas $TEMP
 $ mv $TEMP input.pas
 $ ./post_correction.py input.pas $TEMP
