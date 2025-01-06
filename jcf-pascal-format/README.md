@@ -12,7 +12,7 @@ and put the binary (`pascal-format`) in this folder. Add this folder to your
 
 ## Using it in VS Code
 
-Install the extension "Run on Save" by emeraldwalk.
+Install the extension [Run on Save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave) by emeraldwalk.
 
 Then, add these lines to your `settings.json`:
 
