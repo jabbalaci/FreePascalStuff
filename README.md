@@ -3,42 +3,21 @@
 Tools, helper units, assets for Free Pascal.
 
 
-## ptop (autoformatter)
+## Jabba Utils
 
-See the folder `ptop/`
+See the folder `JabbaUtils/`.
 
-`ptop` is a source code formatter that you get
-together with `fpc`. Basic usage:
+`JabbaUtils.pas` is my general-purpose helper unit that I often
+use in my projects.
 
-```bash
-$ ptop input.pas output.pas
-```
+The folder may also include units written by other people.
+Credits are given everywhere.
 
-Its default settings are quite strange. For instance,
-it capitalizes the keywords (`begin` becomes `Begin`, etc.).
-I didn't like that so I customized its configuration a bit.
 
-* `config.original.cfg`: the default config of ptop.
-  You can generate it with `ptop -g config.txt`
-* `config.cfg`: my own settings
+## JEDI Pascal code formatter
 
-After tweaking the config of ptop, I still couldn't solve some
-issues, thus I made a small Python script that does some
-post-processing after ptop. Usage:
-
-```bash
-$ ./post_correction.py input.pas output.pas
-```
-
-To sum up, here are the necessary steps to beautify a source code:
-
-```bash
-$ TEMP=temp.hh6455.pas  # a temporary file with a unique name
-$ ptop -c config.cfg input.pas $TEMP
-$ mv $TEMP input.pas
-$ ./post_correction.py input.pas $TEMP
-$ mv $TEMP input.pas
-```
+See the folder `jcf-pascal-format/`. For me, it worked better
+than `ptop`. I suggest using this one for code formatting.
 
 
 ## ASCII table
@@ -64,14 +43,3 @@ a test
 
 Where `^D` indicates the Ctrl-D keypress.
 If you want clipboard support, install the package `xsel` using your system's package manager (e.g., under Ubuntu: `sudo apt install xsel`).
-
-
-## Jabba Utils
-
-See the folder `JabbaUtils/`
-
-`JabbaUtils.pas` is my general-purpose helper unit that I often
-use in my projects.
-
-The folder may also include units from other people.
-Credits are given everywhere.
