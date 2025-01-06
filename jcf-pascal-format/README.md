@@ -7,7 +7,8 @@ JEDI Pascal code formatter from https://github.com/quadroid/jcf-pascal-format
 ## Preparation
 
 Compile the project (as described here: https://github.com/quadroid/jcf-pascal-format)
-and put the binary (`pascal-format`) in this folder.
+and put the binary (`pascal-format`) in this folder. Add this folder to your
+`PATH`, thus you can call this code formatter from anywhere.
 
 ## Using it in VS Code
 
