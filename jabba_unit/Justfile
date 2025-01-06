@@ -1,0 +1,17 @@
+cat:
+	cat Justfile
+
+compile:
+	fpc main.pas
+
+run:
+	./main
+
+tests:
+	fpc TestJabba.pas -otests
+	./tests
+	rm tests
+	just clean
+
+clean:
+	\rm -f ./*.o ./*.ppu ./main ./tests ./TestJabba ./GPATH ./GRTAGS ./GTAGS
