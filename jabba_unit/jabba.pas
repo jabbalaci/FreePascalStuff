@@ -14,9 +14,9 @@ function PySlice(const s: string;
                  const startIndex: Integer;
                  const endIndex: Integer = MaxInt): string;
 generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
-procedure PrintArray(const arr: array of Char; quote: Boolean = False); overload;
+procedure PrintArray(const arr: array of Char; quote: Boolean = True); overload;
 procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overload;
-procedure PrintArray(const arr: array of String; quote: Boolean = False); overload;
+procedure PrintArray(const arr: array of String; quote: Boolean = True); overload;
 function Sum(const arr: array of Integer): Int64;
 function Prod(const arr: array of Integer): Int64;
 
@@ -91,17 +91,19 @@ begin
   WriteLn(']');
 end;
 
-procedure PrintArray(const arr: array of Char; quote: Boolean = False); overload;
+
+procedure PrintArray(const arr: array of Char; quote: Boolean = True); overload;
 begin
   specialize PrintArray<Char>(arr, quote);
 end;
+
 
 procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overload;
 begin
   specialize PrintArray<Integer>(arr, quote);
 end;
 
-procedure PrintArray(const arr: array of String; quote: Boolean = False); overload;
+procedure PrintArray(const arr: array of String; quote: Boolean = True); overload;
 begin
   specialize PrintArray<String>(arr, quote);
 end;

@@ -21,9 +21,6 @@ begin
   // Test with character array
   s := 'Hello';
   chars := s.ToCharArray();
-  // With quotes
-  PrintArray(chars, True);
-  // Without quotes
   PrintArray(chars);
 
   // Test with integer array
@@ -32,7 +29,6 @@ begin
 
   // Test with string array
   strings := ['cat', 'dog', 'bird'];
-  PrintArray(strings, True);
   PrintArray(strings);
 end;
 
