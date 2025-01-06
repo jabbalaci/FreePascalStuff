@@ -2,9 +2,9 @@
 
 Tools, helper units, assets for Free Pascal.
 
-## multiline_str.py
+## Multiline string
 
-It converts a multiline string to Pascal code.
+`multiline_str.py` converts a multiline string to Pascal code.
 
 ```text
 $ ./multiline_str.py
@@ -20,3 +20,7 @@ a test
 
 Where `^D` indicates the Ctrl-D keypress.
 If you want clipboard support, install the package `xsel` using your system's package manager (e.g., under Ubuntu: `sudo apt install xsel`).
+
+## ASCII table
+
+See `ascii.txt` .
