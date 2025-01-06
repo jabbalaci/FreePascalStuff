@@ -41,7 +41,7 @@ $ mv $TEMP input.pas
 
 ## ASCII table
 
-See `ascii.txt` .
+See `ascii.txt`
 
 
 ## Multiline string
