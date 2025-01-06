@@ -165,3 +165,7 @@ cython_debug/
 
 .vscode/
 *.bak
+
+*.o
+*.ppu
+

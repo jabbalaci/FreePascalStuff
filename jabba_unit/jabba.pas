@@ -13,10 +13,10 @@ function Input(const prompt: String = ''): String;
 function PySlice(const s: string;
                  const startIndex: Integer;
                  const endIndex: Integer = MaxInt): string;
-generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False);
-procedure PrintCharArray(const arr: array of Char; quote: Boolean = False);
-procedure PrintIntArray(const arr: array of Integer; quote: Boolean = False);
-procedure PrintStrArray(const arr: array of String; quote: Boolean = False);
+generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
+procedure PrintArray(const arr: array of Char; quote: Boolean = False); overload;
+procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overload;
+procedure PrintArray(const arr: array of String; quote: Boolean = False); overload;
 function Sum(const arr: array of Integer): Int64;
 function Prod(const arr: array of Integer): Int64;
 
@@ -73,7 +73,7 @@ begin
 end;
 
 
-generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False);
+generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
 var
   i: Integer;
 begin
@@ -91,17 +91,17 @@ begin
   WriteLn(']');
 end;
 
-procedure PrintCharArray(const arr: array of Char; quote: Boolean = False);
+procedure PrintArray(const arr: array of Char; quote: Boolean = False); overload;
 begin
   specialize PrintArray<Char>(arr, quote);
 end;
 
-procedure PrintIntArray(const arr: array of Integer; quote: Boolean = False);
+procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overload;
 begin
   specialize PrintArray<Integer>(arr, quote);
 end;
 
-procedure PrintStrArray(const arr: array of String; quote: Boolean = False);
+procedure PrintArray(const arr: array of String; quote: Boolean = False); overload;
 begin
   specialize PrintArray<String>(arr, quote);
 end;

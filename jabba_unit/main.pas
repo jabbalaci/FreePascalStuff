@@ -22,18 +22,18 @@ begin
   s := 'Hello';
   chars := s.ToCharArray();
   // With quotes
-  PrintCharArray(chars, True);
+  PrintArray(chars, True);
   // Without quotes
-  PrintCharArray(chars);
+  PrintArray(chars);
 
   // Test with integer array
   numbers := [2, 5, 7];
-  PrintIntArray(numbers);
+  PrintArray(numbers);
 
   // Test with string array
   strings := ['cat', 'dog', 'bird'];
-  PrintStrArray(strings, True);
-  PrintStrArray(strings);
+  PrintArray(strings, True);
+  PrintArray(strings);
 end;
 
 //---------------------------------------------------------------------------
