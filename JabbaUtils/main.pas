@@ -6,7 +6,7 @@ program Main;
 
 
 uses
-  Jabba, sysutils;
+  JabbaUtils, sysutils;
 
 procedure Main();
 var

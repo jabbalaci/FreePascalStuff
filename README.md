@@ -66,9 +66,12 @@ Where `^D` indicates the Ctrl-D keypress.
 If you want clipboard support, install the package `xsel` using your system's package manager (e.g., under Ubuntu: `sudo apt install xsel`).
 
 
-## Jabba unit
+## Jabba Utils
 
-See the folder `jabba_unit/`
+See the folder `JabbaUtils/`
 
-This is a general-purpose helper unit that I often
+`JabbaUtils.pas` is my general-purpose helper unit that I often
 use in my projects.
+
+The folder may also include units from other people.
+Credits are given everywhere.

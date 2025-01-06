@@ -3,9 +3,9 @@
 // Don't forget to enable the assertions!
 // You need this: {$C+}
 
-program TestJabba;
+program JabbaUtilsTests;
 
-uses Jabba;
+uses JabbaUtils;
 
 procedure TestPySlice();
 begin
