@@ -32,4 +32,4 @@ Of course, you'll have to customize the paths. Then,
 whenever you save your Pascal code, it'll be
 formatted automatically.
 
-Note: I use one more Pascal plugin called "OmniPascal" (by Wosi).
+Note: I use one more Pascal plugin called [OmniPascal](https://marketplace.visualstudio.com/items?itemName=Wosi.omnipascal) by Wosi.
