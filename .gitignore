@@ -169,3 +169,5 @@ cython_debug/
 *.o
 *.ppu
 
+jcf-pascal-format-src/
+jcf-cli-src/

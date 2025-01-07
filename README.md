@@ -14,10 +14,16 @@ The folder may also include units written by other people.
 Credits are given everywhere.
 
 
+## ptop code formatter
+
+See the folder `ptop/`.
+
+
 ## JEDI Pascal code formatter
 
-See the folder `jcf-pascal-format/`. For me, it worked better
-than `ptop`. I suggest using this one for code formatting.
+See the folder `jcf-pascal-format/`. It's not perfect.
+For instance, it didn't recognize the "generic" keyword
+in a unit's interface part.
 
 
 ## ASCII table

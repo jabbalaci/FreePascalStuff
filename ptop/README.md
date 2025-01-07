@@ -1,13 +1,5 @@
 # ptop (autoformatter)
 
-I found a better way to autoformat my Pascal source codes.
-See the folder `jcf-pascal-format/` for more info.
-I suggest using that other solution.
-
-----------
-
-See the folder `ptop/`
-
 `ptop` is a source code formatter that you get
 together with `fpc`. Basic usage:
 
