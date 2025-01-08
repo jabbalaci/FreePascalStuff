@@ -76,6 +76,21 @@ begin
   WriteLn('OK');
 end;
 
+
+procedure TestPySplit();
+var
+  s: String = '     aa        bb         cc      ';
+  parts: TStringArray;
+begin
+  WriteLn('Running TestPySplit...');
+  parts := PySplit(s);
+  Assert(Length(parts) = 3);
+  Assert(parts[0] = 'aa');
+  Assert(parts[1] = 'bb');
+  Assert(parts[2] = 'cc');
+  WriteLn('OK');
+end;
+
 //---------------------------------------------------------------------------
 
 begin
@@ -84,4 +99,5 @@ begin
   TestSum();
   TestProd();
   TestToDigitChar();
+  TestPySplit();
 end.

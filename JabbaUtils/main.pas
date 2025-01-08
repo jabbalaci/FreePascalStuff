@@ -15,7 +15,7 @@ var
   numbers: array of Integer;
   strings: array of String;
   content: String;
-  lines: array of String;
+  lines, parts: array of String;
 begin
   // line := Input('Your name: ');
   // WriteLn(line);
@@ -38,6 +38,9 @@ begin
   lines := JabbaUtils.Readlines('text.txt');
   for line in lines do
     WriteLn('''' + line + '''');
+  WriteLn('---');
+  s := '   aa       bb       cc      ';
+  PrintArray(PySplit(s));
 end;
 
 //---------------------------------------------------------------------------

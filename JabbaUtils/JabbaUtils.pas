@@ -17,6 +17,7 @@ function Input(const prompt: String = ''): String;
 function PySlice(const s: string;
                  const startIndex: Integer;
                  const endIndex: Integer = MaxInt): string;
+function PySplit(const s: String): TStringArray;
 generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
 procedure PrintArray(const arr: array of Char; quote: Boolean = True); overload;
 procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overload;
@@ -78,6 +79,12 @@ begin
   else
     Result := '';
   // Return empty string for invalid slices
+end;
+
+
+function PySplit(const s: String): TStringArray;
+begin
+  Result := s.Trim().Split([' ', #9, #10, #13], TStringSplitOptions.ExcludeEmpty);
 end;
 
 
