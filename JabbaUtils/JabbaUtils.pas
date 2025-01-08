@@ -19,6 +19,8 @@ procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overl
 procedure PrintArray(const arr: array of String; quote: Boolean = True); overload;
 function Sum(const arr: array of Integer): Int64;
 function Prod(const arr: array of Integer): Int64;
+function Read(const FName: String; const trim: Boolean = True): String;
+function Readlines(const FName: String): TStringArray;
 
 //---------------------------------------------------------------------------
 
@@ -132,6 +134,45 @@ begin
   Result := 1;
   for i := Low(arr) to High(arr) do
     Result *= arr[i];
+end;
+
+// don't use it with big files
+function Read(const FName: String; const trim: Boolean = True): String;
+var
+  F: TextFile;
+  line: String;
+begin
+  Result := '';
+  AssignFile(F, FName);
+  Reset(F);
+  while not Eof(F) do
+    begin
+      ReadLn(F, line);
+      Result += line + LineEnding;
+    end;
+  CloseFile(F);
+  if trim then
+    Result := Result.TrimRight();
+end;
+
+// don't use it with big files
+function Readlines(const FName: String): TStringArray;
+var
+  F: TextFile;
+  line: String;
+  idx: Integer = 0;
+begin
+  Result := [];
+  AssignFile(F, FName);
+  Reset(F);
+  while not Eof(F) do
+    begin
+      ReadLn(F, line);
+      SetLength(Result, Length(Result) + 1);
+      Result[idx] := line;
+      idx += 1;
+    end;
+  CloseFile(F);
 end;
 
 //---------------------------------------------------------------------------
