@@ -16,7 +16,7 @@ Credits are given everywhere.
 
 ## ptop code formatter
 
-See the folder `ptop/`.
+See the folder `ptop/`. This is what I use.
 
 
 ## JEDI Pascal code formatter

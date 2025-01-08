@@ -1,7 +1,9 @@
 # ptop (autoformatter)
 
 `ptop` is a source code formatter that you get
-together with `fpc`. Basic usage:
+together with `fpc`.
+
+Basic usage:
 
 ```bash
 $ ptop input.pas output.pas
@@ -32,3 +34,27 @@ $ mv $TEMP input.pas
 $ ./post_correction.py input.pas $TEMP
 $ mv $TEMP input.pas
 ```
+
+## Using it in VS Code
+
+Install the extension [Run on Save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave) by emeraldwalk.
+
+Then, add these lines to your `settings.json`:
+
+```json
+"emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.pas$",
+        "isAsync": false,
+        "cmd": "cd '${fileDirname}' && ptop -l 100 -c /home/jabba/Dropbox/pascal/FreePascalStuff/ptop/config.cfg '${fileBasename}' '${fileBasename}.hjg6343.tmp' && mv '${fileBasename}.hjg6343.tmp' '${fileBasename}' && /home/jabba/Dropbox/pascal/FreePascalStuff/ptop/post_correction.py '${fileBasename}' '${fileBasename}.hjg6343.tmp' && mv '${fileBasename}.hjg6343.tmp' '${fileBasename}'"
+      },
+    ]
+  },
+```
+
+Of course, you'll have to customize the paths. Then,
+whenever you save your Pascal code, it'll be
+formatted automatically.
+
+Note: I use one more Pascal plugin called [OmniPascal](https://marketplace.visualstudio.com/items?itemName=Wosi.omnipascal) by Wosi.
