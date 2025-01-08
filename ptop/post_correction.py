@@ -13,7 +13,7 @@ from pathlib import Path
 INDENT = 2
 
 
-def fix_line_after_uses(input_lines):
+def fix_line_after_uses(input_lines: list[str]) -> list[str]:
     fixed_lines = []
     i = 0
     while i < len(input_lines):
@@ -39,7 +39,7 @@ def fix_line_after_uses(input_lines):
     return fixed_lines
 
 
-def fix_elseif_indentation(input_lines):
+def fix_elseif_indentation(input_lines: list[str]) -> list[str]:
     fixed_lines = []
     i = 0
     while i < len(input_lines):
@@ -73,7 +73,7 @@ def fix_elseif_indentation(input_lines):
     return fixed_lines
 
 
-def main():
+def main() -> None:
     if len(sys.argv) != 3:
         p = Path(sys.argv[0])
         print(f"Usage: {p.name} input.pas output.pas")
