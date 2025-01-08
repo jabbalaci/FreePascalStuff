@@ -23,10 +23,16 @@ def fix_line_after_uses(input_lines):
         # Look for "uses" pattern
         stripped = line.lower().strip()
         if stripped == "uses":
-            i += 1
-            next_line = input_lines[i]
-            stripped_next_line = next_line.lstrip()
-            fixed_lines.append((" " * INDENT) + stripped_next_line)
+            while True:
+                i += 1
+                next_line = input_lines[i]
+                if next_line.strip() == "":
+                    fixed_lines.append(next_line)
+                    break
+                # else:
+                stripped_next_line = next_line.lstrip()
+                fixed_lines.append((" " * INDENT) + stripped_next_line)
+            #
         #
         i += 1
     #
