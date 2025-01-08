@@ -11,6 +11,17 @@ import sys
 from pathlib import Path
 
 INDENT = 2
+SORT_USES = True
+
+
+def my_sort(line: str) -> str:
+    line = line.strip()
+    sep = ";" if ";" in line else ","
+    pos = line.rfind(sep)
+    left, right = line[:pos], line[pos + 1 :]
+    left_parts = [p.strip() for p in left.split(",")]
+    left_parts.sort(key=lambda s: s.lower())
+    return f"{', '.join(left_parts)}{sep}{right}\n"
 
 
 def fix_line_after_uses(input_lines: list[str]) -> list[str]:
@@ -31,6 +42,9 @@ def fix_line_after_uses(input_lines: list[str]) -> list[str]:
                     break
                 # else:
                 stripped_next_line = next_line.lstrip()
+                if SORT_USES:
+                    stripped_next_line = my_sort(stripped_next_line)
+                #
                 fixed_lines.append((" " * INDENT) + stripped_next_line)
             #
         #
