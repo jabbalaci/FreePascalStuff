@@ -5,7 +5,8 @@
 
 program JabbaUtilsTests;
 
-uses JabbaUtils;
+uses
+  JabbaUtils, sysutils;
 
 procedure TestPySlice();
 begin
@@ -46,6 +47,35 @@ begin
   WriteLn('OK');
 end;
 
+
+procedure TestToDigitChar();
+var
+  was_exception: Boolean;
+begin
+  WriteLn('Running TestToDigitChar...');
+  Assert(ToDigit('0') = 0);
+  Assert(ToDigit('1') = 1);
+  Assert(ToDigit('2') = 2);
+  Assert(ToDigit('3') = 3);
+  Assert(ToDigit('4') = 4);
+  Assert(ToDigit('5') = 5);
+  Assert(ToDigit('6') = 6);
+  Assert(ToDigit('7') = 7);
+  Assert(ToDigit('8') = 8);
+  Assert(ToDigit('9') = 9);
+  was_exception := False;
+  try
+    Assert(ToDigit('x') = 9);
+  except
+    on E: EValueError do
+          begin
+            was_exception := True;
+          end;
+  end;
+  Assert(was_exception = True);
+  WriteLn('OK');
+end;
+
 //---------------------------------------------------------------------------
 
 begin
@@ -53,4 +83,5 @@ begin
   TestPySlice();
   TestSum();
   TestProd();
+  TestToDigitChar();
 end.

@@ -6,7 +6,11 @@ unit JabbaUtils;
 
 interface
 
-uses sysutils;
+uses
+  Character, sysutils;
+
+type
+  EValueError = class(Exception);
 
 
 function Input(const prompt: String = ''): String;
@@ -17,6 +21,8 @@ generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); 
 procedure PrintArray(const arr: array of Char; quote: Boolean = True); overload;
 procedure PrintArray(const arr: array of Integer; quote: Boolean = False); overload;
 procedure PrintArray(const arr: array of String; quote: Boolean = True); overload;
+function ToDigit(const c: Char): Integer; overload;
+function ToDigit(const s: String): Integer; overload;
 function Sum(const arr: array of Integer): Int64;
 function Prod(const arr: array of Integer): Int64;
 function Read(const FName: String; const trim: Boolean = True): String;
@@ -111,9 +117,19 @@ begin
 end;
 
 
-function ToDigit(const c: Char): Integer;
+function ToDigit(const c: Char): Integer; overload;
 begin
+  if not IsDigit(c) then
+    raise EValueError.Create(Format('ToDigit(): expected digit, got "%s"', [c]));
   result := ord(c) - ord('0');
+end;
+
+function ToDigit(const s: String): Integer; overload;
+begin
+  if Length(s) <> 1 then
+    raise EValueError.Create(Format('ToDigit(): expected 1 character, got "%s"', [s]));
+  // else:
+  result := ToDigit(s[1]);
 end;
 
 
