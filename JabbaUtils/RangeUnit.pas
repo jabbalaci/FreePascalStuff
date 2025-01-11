@@ -11,11 +11,9 @@ unit RangeUnit;
 interface
 
 uses
-  sysutils;
+  JabbaTypes, sysutils;
 
 type
-  TIntArray = array of integer;
-
   TIntRange = record
     private
       FCurrent: integer;

@@ -6,11 +6,9 @@
 program RangeUnitTests;
 
 uses
-  JabbaUtils, RangeUnit, sysutils;
+  JabbaTypes, JabbaUtils, RangeUnit, sysutils;
 
 procedure TestPyRange();
-var
-  li: TIntArray;
 begin
   WriteLn('Running TestPyRange...');
   Assert(ArraysEqual(PyRangeList(0, 5), [0, 1, 2, 3, 4]) = True);

@@ -7,10 +7,7 @@ unit JabbaUtils;
 interface
 
 uses
-  Character, sysutils;
-
-type
-  EValueError = class(Exception);
+  Character, JabbaTypes, sysutils;
 
 
 function Input(const prompt: String = ''): String;
