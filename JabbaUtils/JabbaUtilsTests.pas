@@ -91,6 +91,50 @@ begin
   WriteLn('OK');
 end;
 
+
+procedure TestRemovePrefix();
+begin
+  WriteLn('Running TestRemovePrefix...');
+  Assert(RemovePrefix('laci.txt', 'la') = 'ci.txt');
+  Assert(RemovePrefix('laci.txt', 'laci') = '.txt');
+  Assert(RemovePrefix('laci.txt', '') = 'laci.txt');
+  Assert(RemovePrefix('laci.txt', 'x') = 'laci.txt');
+  Assert(RemovePrefix('', 'la') = '');
+  Assert(RemovePrefix('la', 'la') = '');
+  Assert(RemovePrefix('lala', 'la') = 'la');
+  Assert(RemovePrefix('LACI.TXT', 'la') = 'LACI.TXT');  // case sensitive
+  WriteLn('OK');
+end;
+
+procedure TestRemovePostfix();
+begin
+  WriteLn('Running TestRemovePostfix...');
+  Assert(RemovePostfix('laci.txt', '.txt') = 'laci');
+  Assert(RemovePostfix('laci.txt', 'txt') = 'laci.');
+  Assert(RemovePostfix('laci.txt', '') = 'laci.txt');
+  Assert(RemovePostfix('laci.txt', 'x') = 'laci.txt');
+  Assert(RemovePostfix('', '.txt') = '');
+  Assert(RemovePostfix('.txt', '.txt') = '');
+  Assert(RemovePostfix('.txt.txt', '.txt') = '.txt');
+  Assert(RemovePostfix('laci.TXT', '.txt') = 'laci.TXT');  // case sensitive
+  WriteLn('OK');
+end;
+
+procedure TestCompareArraysInteger();
+begin
+  WriteLn('Running TestCompareArraysInteger...');
+  Assert(CompareArrays([], []) = True);
+  Assert(CompareArrays([1], [1]) = True);
+  Assert(CompareArrays([1], [2]) = False);
+  Assert(CompareArrays([1, 2], [1]) = False);
+  Assert(CompareArrays([1, 2], [2]) = False);
+  Assert(CompareArrays([1, 5, 7], [1, 5, 7]) = True);
+  Assert(CompareArrays([1, 5, 7], [1, 5]) = False);
+  Assert(CompareArrays([1, 5, 7], [1]) = False);
+  Assert(CompareArrays([1, 5, 7], []) = False);
+  WriteLn('OK');
+end;
+
 //---------------------------------------------------------------------------
 
 begin
@@ -100,4 +144,7 @@ begin
   TestProd();
   TestToDigitChar();
   TestPySplit();
+  TestRemovePrefix();
+  TestRemovePostfix();
+  TestCompareArraysInteger();
 end.

@@ -1,12 +1,6 @@
 cat:
 	cat Justfile
 
-compile:
-	fpc main.pas
-
-run:
-	./main
-
 tests:
 	fpc JabbaUtilsTests.pas -otests
 	./tests
@@ -14,4 +8,5 @@ tests:
 	just clean
 
 clean:
-	\rm -f ./*.o ./*.ppu ./main ./tests ./JabbaUtilsTests ./GPATH ./GRTAGS ./GTAGS
+	\rm -f ./*.o ./*.ppu ./GPATH ./GRTAGS ./GTAGS
+	\rm -f ./main ./*Tests ./*Demo

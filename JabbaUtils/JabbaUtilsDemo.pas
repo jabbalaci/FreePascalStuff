@@ -1,6 +1,6 @@
 {$mode objfpc}{$H+}{$J-}
 
-program Main;
+program JabbaUtilsDemo;
 
 // some demo, showing how to use the Jabba unit
 

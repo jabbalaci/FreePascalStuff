@@ -28,6 +28,10 @@ function Sum(const arr: array of Integer): Int64;
 function Prod(const arr: array of Integer): Int64;
 function Read(const FName: String; const trim: Boolean = True): String;
 function Readlines(const FName: String): TStringArray;
+function RemovePrefix(const s, prefix: string): string;
+function RemovePostfix(const s, postfix: string): string;
+generic function CompareArrays<T>(const arr1, arr2: array of T): Boolean; overload;
+function CompareArrays(const arr1, arr2: array of Integer): Boolean; overload;
 
 //---------------------------------------------------------------------------
 
@@ -196,6 +200,41 @@ begin
       idx += 1;
     end;
   CloseFile(F);
+end;
+
+
+function RemovePrefix(const s, prefix: string): string;
+begin
+  Result := s;
+  if s.StartsWith(prefix) then
+    Result := Copy(s, Length(prefix) + 1, Length(s));
+end;
+
+function RemovePostfix(const s, postfix: string): string;
+begin
+  Result := s;
+  if s.EndsWith(postfix) then
+    Result := Copy(s, 1, Length(s) - Length(postfix));
+end;
+
+
+generic function CompareArrays<T>(const arr1, arr2: array of T): Boolean; overload;
+var
+  i: Integer;
+begin
+  if Length(arr1) <> Length(arr2) then
+    Exit(False);
+
+  for i := 0 to Length(arr1) - 1 do
+    if arr1[i] <> arr2[i] then
+      Exit(False);
+
+  Result := True;
+end;
+
+function CompareArrays(const arr1, arr2: array of Integer): Boolean; overload;
+begin
+  Result := specialize CompareArrays<Integer>(arr1, arr2);
 end;
 
 //---------------------------------------------------------------------------
