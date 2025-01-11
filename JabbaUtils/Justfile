@@ -4,6 +4,9 @@ cat:
 tests:
 	fpc JabbaUtilsTests.pas -otests
 	./tests
+	fpc RangeUnitTests.pas -otests
+	./tests
+	#
 	rm tests
 	just clean
 

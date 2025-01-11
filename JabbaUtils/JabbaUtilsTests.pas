@@ -120,18 +120,18 @@ begin
   WriteLn('OK');
 end;
 
-procedure TestCompareArraysInteger();
+procedure TestArraysEqualInteger();
 begin
-  WriteLn('Running TestCompareArraysInteger...');
-  Assert(CompareArrays([], []) = True);
-  Assert(CompareArrays([1], [1]) = True);
-  Assert(CompareArrays([1], [2]) = False);
-  Assert(CompareArrays([1, 2], [1]) = False);
-  Assert(CompareArrays([1, 2], [2]) = False);
-  Assert(CompareArrays([1, 5, 7], [1, 5, 7]) = True);
-  Assert(CompareArrays([1, 5, 7], [1, 5]) = False);
-  Assert(CompareArrays([1, 5, 7], [1]) = False);
-  Assert(CompareArrays([1, 5, 7], []) = False);
+  WriteLn('Running TestArraysEqualInteger...');
+  Assert(ArraysEqual([], []) = True);
+  Assert(ArraysEqual([1], [1]) = True);
+  Assert(ArraysEqual([1], [2]) = False);
+  Assert(ArraysEqual([1, 2], [1]) = False);
+  Assert(ArraysEqual([1, 2], [2]) = False);
+  Assert(ArraysEqual([1, 5, 7], [1, 5, 7]) = True);
+  Assert(ArraysEqual([1, 5, 7], [1, 5]) = False);
+  Assert(ArraysEqual([1, 5, 7], [1]) = False);
+  Assert(ArraysEqual([1, 5, 7], []) = False);
   WriteLn('OK');
 end;
 
@@ -146,5 +146,5 @@ begin
   TestPySplit();
   TestRemovePrefix();
   TestRemovePostfix();
-  TestCompareArraysInteger();
+  TestArraysEqualInteger();
 end.

@@ -3,6 +3,7 @@
 
 // This unit defines a range type that can be used to iterate over a range of integers.
 // Based on a comment at https://forum.lazarus.freepascal.org/index.php?topic=35141.0
+//
 // Slow! Use it only for small ranges.
 
 unit RangeUnit;

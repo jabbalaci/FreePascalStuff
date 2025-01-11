@@ -30,8 +30,8 @@ function Read(const FName: String; const trim: Boolean = True): String;
 function Readlines(const FName: String): TStringArray;
 function RemovePrefix(const s, prefix: string): string;
 function RemovePostfix(const s, postfix: string): string;
-generic function CompareArrays<T>(const arr1, arr2: array of T): Boolean; overload;
-function CompareArrays(const arr1, arr2: array of Integer): Boolean; overload;
+generic function ArraysEqual<T>(const arr1, arr2: array of T): Boolean; overload;
+function ArraysEqual(const arr1, arr2: array of Integer): Boolean; overload;
 
 //---------------------------------------------------------------------------
 
@@ -218,7 +218,7 @@ begin
 end;
 
 
-generic function CompareArrays<T>(const arr1, arr2: array of T): Boolean; overload;
+generic function ArraysEqual<T>(const arr1, arr2: array of T): Boolean; overload;
 var
   i: Integer;
 begin
@@ -232,9 +232,9 @@ begin
   Result := True;
 end;
 
-function CompareArrays(const arr1, arr2: array of Integer): Boolean; overload;
+function ArraysEqual(const arr1, arr2: array of Integer): Boolean; overload;
 begin
-  Result := specialize CompareArrays<Integer>(arr1, arr2);
+  Result := specialize ArraysEqual<Integer>(arr1, arr2);
 end;
 
 //---------------------------------------------------------------------------
