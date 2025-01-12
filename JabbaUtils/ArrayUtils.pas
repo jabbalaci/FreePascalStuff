@@ -30,7 +30,9 @@ function ArraysEqual(const arr1, arr2: array of Integer): Boolean; overload;
 function ArraysEqual(const arr1, arr2: array of String): Boolean; overload;
 //
 function ConcatArrays(const a, b: array of Integer): TIntArray; overload;
-
+function PySlice(const arr: TIntArray;
+                 const startIndex: Integer;
+                 const endIndex: Integer = MaxInt): TIntArray; overload;
 
 //---------------------------------------------------------------------------
 
@@ -189,6 +191,43 @@ begin
   SetLength(Result, Length(a) + Length(b));
   Move(a[0], Result[0], Length(a) * SizeOf(Integer));
   Move(b[0], Result[Length(a)], Length(b) * SizeOf(Integer));
+end;
+
+
+function PySlice(const arr: TIntArray;
+                 const startIndex: Integer;
+                 const endIndex: Integer = MaxInt): TIntArray; overload;
+var
+  actualStart, actualEnd, len: Integer;
+begin
+  len := Length(arr);
+
+  // Handle negative indices for startIndex
+  if startIndex < 0 then
+    actualStart := len + startIndex
+  else
+    actualStart := startIndex;
+
+  // Handle negative or default endIndex
+  if endIndex = MaxInt then
+    actualEnd := len  // Default to the end of the string (exclusive)
+  else if endIndex < 0 then
+    actualEnd := len + endIndex  // Handle negative endIndex
+  else
+    actualEnd := endIndex;
+
+  // Ensure bounds are within valid range
+  if actualStart < 0 then
+    actualStart := 0;
+  if actualEnd > len then
+    actualEnd := len;
+
+  // If start < end, return the substring; otherwise, return empty string
+  if actualStart < actualEnd then
+    Result := Copy(arr, actualStart, actualEnd - actualStart)
+  else
+    Result := [];
+  // Return empty array for invalid slices
 end;
 
 //---------------------------------------------------------------------------

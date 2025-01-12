@@ -30,6 +30,9 @@ begin
   SimpleSort(words, True);
   PrintArray(li);
   PrintArray(words);
+  WriteLn('---');
+  li := [8, 5, 1, 3];
+  PrintArray(PySlice(li, -2));  // [1, 3]
 end;
 
 //---------------------------------------------------------------------------

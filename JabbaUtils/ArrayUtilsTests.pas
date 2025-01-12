@@ -75,6 +75,22 @@ begin
 end;
 
 
+procedure TestPySlice();
+begin
+  WriteLn('Running TestPySlice...');
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], 0, 3), [0, 1, 2]) = True);
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], 1, 4), [1, 2, 3]) = True);
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], 0), [0, 1, 2, 3, 4, 5]) = True);
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], -3), [3, 4, 5]) = True);
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], 1, -1), [1, 2, 3, 4]) = True);
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], 0, -1), [0, 1, 2, 3, 4]) = True);
+  //
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], 0, 100), [0, 1, 2, 3, 4, 5]) = True);
+  Assert(ArraysEqual(PySlice([0, 1, 2, 3, 4, 5], -3, 100), [3, 4, 5]) = True);
+  WriteLn('OK');
+end;
+
+
 //---------------------------------------------------------------------------
 
 begin
@@ -82,4 +98,5 @@ begin
   TestReverseOrder();
   TestSimpleSortInteger();
   TestSimpleSortString();
+  TestPySlice();
 end.

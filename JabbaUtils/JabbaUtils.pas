@@ -13,7 +13,7 @@ uses
 function Input(const prompt: String = ''): String;
 function PySlice(const s: string;
                  const startIndex: Integer;
-                 const endIndex: Integer = MaxInt): string;
+                 const endIndex: Integer = MaxInt): string; overload;
 function PySplit(const s: String): TStringArray;
 function ToDigit(const c: Char): Integer; overload;
 function ToDigit(const s: String): Integer; overload;
@@ -39,7 +39,7 @@ end;
 
 function PySlice(const s: string;
                  const startIndex: Integer;
-                 const endIndex: Integer = MaxInt): string;
+                 const endIndex: Integer = MaxInt): string; overload;
 var
   actualStart, actualEnd, len: Integer;
 begin
