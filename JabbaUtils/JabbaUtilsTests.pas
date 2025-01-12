@@ -123,7 +123,7 @@ end;
 procedure TestArraysEqualInteger();
 begin
   WriteLn('Running TestArraysEqualInteger...');
-  Assert(ArraysEqual([], []) = True);
+  Assert(specialize ArraysEqual<Integer>([], []) = True);
   Assert(ArraysEqual([1], [1]) = True);
   Assert(ArraysEqual([1], [2]) = False);
   Assert(ArraysEqual([1, 2], [1]) = False);
@@ -132,6 +132,22 @@ begin
   Assert(ArraysEqual([1, 5, 7], [1, 5]) = False);
   Assert(ArraysEqual([1, 5, 7], [1]) = False);
   Assert(ArraysEqual([1, 5, 7], []) = False);
+  WriteLn('OK');
+end;
+
+procedure TestConcatArraysInteger();
+var
+  c: array of Integer;
+begin
+  WriteLn('Running TestConcatArraysInteger...');
+  c := ConcatArrays([1, 2], [3, 4]);
+  Assert(ArraysEqual(c, [1, 2, 3, 4]) = True);
+  c := ConcatArrays([1, 2], []);
+  Assert(ArraysEqual(c, [1, 2]) = True);
+  c := ConcatArrays([], [1, 2]);
+  Assert(ArraysEqual(c, [1, 2]) = True);
+  c := ConcatArrays([1], [2]);
+  Assert(ArraysEqual(c, [1, 2]) = True);
   WriteLn('OK');
 end;
 
@@ -147,4 +163,5 @@ begin
   TestRemovePrefix();
   TestRemovePostfix();
   TestArraysEqualInteger();
+  TestConcatArraysInteger();
 end.

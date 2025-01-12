@@ -29,6 +29,8 @@ function RemovePrefix(const s, prefix: string): string;
 function RemovePostfix(const s, postfix: string): string;
 generic function ArraysEqual<T>(const arr1, arr2: array of T): Boolean; overload;
 function ArraysEqual(const arr1, arr2: array of Integer): Boolean; overload;
+function ArraysEqual(const arr1, arr2: array of String): Boolean; overload;
+function ConcatArrays(const a, b: array of Integer): TIntArray; overload;
 
 //---------------------------------------------------------------------------
 
@@ -232,6 +234,20 @@ end;
 function ArraysEqual(const arr1, arr2: array of Integer): Boolean; overload;
 begin
   Result := specialize ArraysEqual<Integer>(arr1, arr2);
+end;
+
+function ArraysEqual(const arr1, arr2: array of String): Boolean; overload;
+begin
+  Result := specialize ArraysEqual<String>(arr1, arr2);
+end;
+
+
+function ConcatArrays(const a, b: array of Integer): TIntArray; overload;
+begin
+  Result := [];
+  SetLength(Result, Length(a) + Length(b));
+  Move(a[0], Result[0], Length(a) * SizeOf(Integer));
+  Move(b[0], Result[Length(a)], Length(b) * SizeOf(Integer));
 end;
 
 //---------------------------------------------------------------------------

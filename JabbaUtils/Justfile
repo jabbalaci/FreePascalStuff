@@ -6,6 +6,8 @@ tests:
 	./tests
 	fpc RangeUnitTests.pas -otests
 	./tests
+	fpc ArrayUtilsTests.pas -otests
+	./tests
 	#
 	rm tests
 	just clean
