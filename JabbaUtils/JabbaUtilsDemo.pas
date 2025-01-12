@@ -16,6 +16,7 @@ var
   numbers: array of Integer;
   strings: array of String;
   lines: array of String;
+  c: Char;
 begin
   // line := Input('Your name: ');
   // WriteLn(line);
@@ -41,6 +42,10 @@ begin
   WriteLn('---');
   s := '   aa       bb       cc      ';
   PrintArray(PySplit(s));
+  WriteLn('---');
+  c := 'x';
+  WriteLn(Times(c, 10));
+  WriteLn('''' + Center('lac', 10) + '''');
 end;
 
 //---------------------------------------------------------------------------

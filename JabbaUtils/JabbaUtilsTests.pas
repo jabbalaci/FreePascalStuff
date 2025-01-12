@@ -96,6 +96,31 @@ begin
   WriteLn('OK');
 end;
 
+
+procedure TestTimes();
+begin
+  WriteLn('Running TestTimes...');
+  Assert(Times('x', 3) = 'xxx');
+  Assert(Times('x', 0) = '');
+  Assert(Times('x', -1) = '');
+  Assert(Times('-x', 3) = '-x-x-x');
+  WriteLn('OK');
+end;
+
+
+procedure TestCenter();
+begin
+  WriteLn('Running TestCenter...');
+  Assert(Center('x', 3) = ' x ');
+  Assert(Center('x', 3, '_') = '_x_');
+  Assert(Center('x', 4) = ' x  ');
+  Assert(Center('x', 5) = '  x  ');
+  Assert(Center('abcde', 3) = 'abcde');
+  Assert(Center('abcde', 0) = 'abcde');
+  Assert(Center('abcde', -1) = 'abcde');
+  WriteLn('OK');
+end;
+
 //---------------------------------------------------------------------------
 
 begin
@@ -105,4 +130,6 @@ begin
   TestToDigitChar();
   TestRemovePrefix();
   TestRemovePostfix();
+  TestTimes();
+  TestCenter();
 end.

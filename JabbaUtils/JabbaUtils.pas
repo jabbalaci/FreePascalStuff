@@ -21,6 +21,8 @@ function Read(const FName: String; const trim: Boolean = True): String;
 function Readlines(const FName: String): TStringArray;
 function RemovePrefix(const s, prefix: string): string;
 function RemovePostfix(const s, postfix: string): string;
+function Times(const s: String; const n: Integer): String;
+function Center(const s: string; width: Integer; padChar: Char = ' '): string;
 
 //---------------------------------------------------------------------------
 
@@ -149,6 +151,32 @@ begin
   Result := s;
   if s.EndsWith(postfix) then
     Result := Copy(s, 1, Length(s) - Length(postfix));
+end;
+
+
+function Times(const s: String; const n: Integer): String;
+var
+  i: Integer;
+begin
+  Result := '';
+  for i := 1 to n do
+    Result += s;
+end;
+
+
+function Center(const s: string; width: Integer; padChar: Char = ' '): string;
+var
+  padding, leftPad: Integer;
+begin
+  if Length(s) >= width then
+    Result := s
+  else
+    begin
+      padding := width - Length(s);
+      leftPad := padding div 2;
+      Result := StringOfChar(padChar, leftPad) + s +
+                StringOfChar(padChar, padding - leftPad);
+    end;
 end;
 
 //---------------------------------------------------------------------------
