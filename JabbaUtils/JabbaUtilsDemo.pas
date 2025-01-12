@@ -5,7 +5,8 @@ program JabbaUtilsDemo;
 // some demo, showing how to use the Jabba unit
 
 uses
-  JabbaUtils, sysutils;
+  ArrayUtils, JabbaUtils, sysutils;
+  // JabbaUtils, sysutils;
 
 
 procedure Main();
@@ -14,8 +15,7 @@ var
   chars: array of Char;
   numbers: array of Integer;
   strings: array of String;
-  content: String;
-  lines, parts: array of String;
+  lines: array of String;
 begin
   // line := Input('Your name: ');
   // WriteLn(line);
@@ -33,9 +33,9 @@ begin
   strings := ['cat', 'dog', 'bird'];
   PrintArray(strings);
   WriteLn('---');
-  WriteLn('''', JabbaUtils.Read('text.txt'), '''');
+  WriteLn('''', Read('text.txt'), '''');
   WriteLn('---');
-  lines := JabbaUtils.Readlines('text.txt');
+  lines := Readlines('text.txt');
   for line in lines do
     WriteLn('''' + line + '''');
   WriteLn('---');

@@ -6,7 +6,7 @@
 program ArrayUtilsTests;
 
 uses
-  ArrayUtils, JabbaTypes, JabbaUtils, sysutils;
+  ArrayUtils;
 
 procedure TestReverseOrder();
 var

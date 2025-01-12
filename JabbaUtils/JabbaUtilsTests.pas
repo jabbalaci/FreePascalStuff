@@ -6,7 +6,7 @@
 program JabbaUtilsTests;
 
 uses
-  JabbaTypes, JabbaUtils, sysutils;
+  ArrayUtils, JabbaTypes, JabbaUtils, sysutils;
 
 procedure TestPySlice();
 begin

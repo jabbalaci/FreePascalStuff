@@ -3,7 +3,7 @@
 program ArrayUtilsDemo;
 
 uses
-  ArrayUtils, JabbaUtils, sysutils;
+  ArrayUtils;
 
 procedure Main();
 var

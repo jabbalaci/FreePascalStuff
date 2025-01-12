@@ -6,7 +6,7 @@
 program RangeUnitTests;
 
 uses
-  JabbaTypes, JabbaUtils, RangeUnit, sysutils;
+  ArrayUtils, RangeUnit;
 
 procedure TestPyRange();
 begin
