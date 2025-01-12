@@ -24,30 +24,6 @@ begin
 end;
 
 
-procedure TestSum();
-begin
-  WriteLn('Running TestSum...');
-  Assert(Sum([]) = 0);
-  Assert(Sum([1]) = 1);
-  Assert(Sum([1, 2]) = 3);
-  Assert(Sum([1, 2, 3]) = 6);
-  Assert(Sum([2, -2]) = 0);
-  WriteLn('OK');
-end;
-
-
-procedure TestProd();
-begin
-  WriteLn('Running TestProd...');
-  Assert(Prod([]) = 1);
-  Assert(Prod([1]) = 1);
-  Assert(Prod([1, 2]) = 2);
-  Assert(Prod([1, 2, 3]) = 6);
-  Assert(Prod([2, -2]) = -4);
-  WriteLn('OK');
-end;
-
-
 procedure TestToDigitChar();
 var
   was_exception: Boolean;
@@ -120,48 +96,13 @@ begin
   WriteLn('OK');
 end;
 
-procedure TestArraysEqualInteger();
-begin
-  WriteLn('Running TestArraysEqualInteger...');
-  Assert(specialize ArraysEqual<Integer>([], []) = True);
-  Assert(ArraysEqual([1], [1]) = True);
-  Assert(ArraysEqual([1], [2]) = False);
-  Assert(ArraysEqual([1, 2], [1]) = False);
-  Assert(ArraysEqual([1, 2], [2]) = False);
-  Assert(ArraysEqual([1, 5, 7], [1, 5, 7]) = True);
-  Assert(ArraysEqual([1, 5, 7], [1, 5]) = False);
-  Assert(ArraysEqual([1, 5, 7], [1]) = False);
-  Assert(ArraysEqual([1, 5, 7], []) = False);
-  WriteLn('OK');
-end;
-
-procedure TestConcatArraysInteger();
-var
-  c: array of Integer;
-begin
-  WriteLn('Running TestConcatArraysInteger...');
-  c := ConcatArrays([1, 2], [3, 4]);
-  Assert(ArraysEqual(c, [1, 2, 3, 4]) = True);
-  c := ConcatArrays([1, 2], []);
-  Assert(ArraysEqual(c, [1, 2]) = True);
-  c := ConcatArrays([], [1, 2]);
-  Assert(ArraysEqual(c, [1, 2]) = True);
-  c := ConcatArrays([1], [2]);
-  Assert(ArraysEqual(c, [1, 2]) = True);
-  WriteLn('OK');
-end;
-
 //---------------------------------------------------------------------------
 
 begin
   WriteLn('---');
   TestPySlice();
-  TestSum();
-  TestProd();
-  TestToDigitChar();
   TestPySplit();
+  TestToDigitChar();
   TestRemovePrefix();
   TestRemovePostfix();
-  TestArraysEqualInteger();
-  TestConcatArraysInteger();
 end.

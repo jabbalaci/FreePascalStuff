@@ -33,6 +33,9 @@ begin
   WriteLn('---');
   li := [8, 5, 1, 3];
   PrintArray(PySlice(li, -2));  // [1, 3]
+  WriteLn('---');
+  PrintArray(ConcatArrays([1, 2], [3, 4]));
+  PrintArray(ConcatArrays(['one', 'two'], ['three', 'four']));
 end;
 
 //---------------------------------------------------------------------------

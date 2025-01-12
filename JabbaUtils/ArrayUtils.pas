@@ -7,7 +7,7 @@ unit ArrayUtils;
 interface
 
 uses
-  JabbaTypes;
+  JabbaTypes, sysutils;
 
 generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
 procedure PrintArray(const arr: array of Char; quote: Boolean = True); overload;
@@ -30,6 +30,7 @@ function ArraysEqual(const arr1, arr2: array of Integer): Boolean; overload;
 function ArraysEqual(const arr1, arr2: array of String): Boolean; overload;
 //
 function ConcatArrays(const a, b: array of Integer): TIntArray; overload;
+function ConcatArrays(const a, b: array of string): TStringArray; overload;
 function PySlice(const arr: TIntArray;
                  const startIndex: Integer;
                  const endIndex: Integer = MaxInt): TIntArray; overload;
@@ -191,6 +192,20 @@ begin
   SetLength(Result, Length(a) + Length(b));
   Move(a[0], Result[0], Length(a) * SizeOf(Integer));
   Move(b[0], Result[Length(a)], Length(b) * SizeOf(Integer));
+end;
+
+function ConcatArrays(const a, b: array of string): TStringArray; overload;
+var
+  i: Integer;
+begin
+  Result := [];
+  SetLength(Result, Length(a) + Length(b));
+  // Copy first array
+  for i := 0 to High(a) do
+    Result[i] := a[i];
+  // Copy second array
+  for i := 0 to High(b) do
+    Result[Length(a) + i] := b[i];
 end;
 
 
