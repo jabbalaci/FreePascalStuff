@@ -2,11 +2,13 @@ cat:
 	cat Justfile
 
 tests:
+	fpc ArrayUtilsTests.pas -otests
+	./tests
 	fpc JabbaUtilsTests.pas -otests
 	./tests
-	fpc RangeUnitTests.pas -otests
+	fpc PairUnitTests.pas -otests
 	./tests
-	fpc ArrayUtilsTests.pas -otests
+	fpc RangeUnitTests.pas -otests
 	./tests
 	#
 	rm tests
