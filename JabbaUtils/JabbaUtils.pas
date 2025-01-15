@@ -7,7 +7,10 @@ unit JabbaUtils;
 interface
 
 uses
-  Character, JabbaTypes, sysutils;
+  Character,
+  JabbaTypes,
+  StrUtils,
+  sysutils;
 
 
 function Input(const prompt: String = ''): String;
@@ -17,12 +20,13 @@ function PySlice(const s: string;
 function PySplit(const s: String): TStringArray;
 function ToDigit(const c: Char): Integer; overload;
 function ToDigit(const s: String): Integer; overload;
-function Read(const FName: String; const trim: Boolean = True): String;
-function Readlines(const FName: String): TStringArray;
+function ReadContent(const FName: String; const trim: Boolean = True): String;
+function ReadLines(const FName: String): TStringArray;
 function RemovePrefix(const s, prefix: string): string;
 function RemovePostfix(const s, postfix: string): string;
 function Times(const s: String; const n: Integer): String;
-function Center(const s: string; width: Integer; padChar: Char = ' '): string;
+operator * (const s: string; const n: Integer): string;
+function Center(const s: string; const width: Integer; const padChar: Char = ' '): string;
 
 //---------------------------------------------------------------------------
 
@@ -100,7 +104,7 @@ end;
 
 
 // don't use it with big files
-function Read(const FName: String; const trim: Boolean = True): String;
+function ReadContent(const FName: String; const trim: Boolean = True): String;
 var
   F: TextFile;
   line: String;
@@ -119,7 +123,7 @@ begin
 end;
 
 // don't use it with big files
-function Readlines(const FName: String): TStringArray;
+function ReadLines(const FName: String): TStringArray;
 var
   F: TextFile;
   line: String;
@@ -158,13 +162,16 @@ function Times(const s: String; const n: Integer): String;
 var
   i: Integer;
 begin
-  Result := '';
-  for i := 1 to n do
-    Result += s;
+  Result := DupeString(s, n);
+end;
+
+operator * (const s: string; const n: Integer): string;
+begin
+  Result := DupeString(s, n);
 end;
 
 
-function Center(const s: string; width: Integer; padChar: Char = ' '): string;
+function Center(const s: string; const width: Integer; const padChar: Char = ' '): string;
 var
   padding, leftPad: Integer;
 begin

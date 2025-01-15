@@ -6,7 +6,10 @@
 program JabbaUtilsTests;
 
 uses
-  ArrayUtils, JabbaTypes, JabbaUtils, sysutils;
+  ArrayUtils,
+  JabbaTypes,
+  JabbaUtils,
+  sysutils;
 
 procedure TestPySlice();
 begin
@@ -101,9 +104,21 @@ procedure TestTimes();
 begin
   WriteLn('Running TestTimes...');
   Assert(Times('x', 3) = 'xxx');
+  Assert(Times('ab', 3) = 'ababab');
   Assert(Times('x', 0) = '');
   Assert(Times('x', -1) = '');
   Assert(Times('-x', 3) = '-x-x-x');
+  WriteLn('OK');
+end;
+
+procedure TestTimesWithOperator();
+begin
+  WriteLn('Running TestTimesWithOperator...');
+  Assert(('x' * 3) = 'xxx');
+  Assert(('ab' * 3) = 'ababab');
+  Assert(('x' * 0) = '');
+  Assert(('x' * -1) = '');
+  Assert(('-x' * 3) = '-x-x-x');
   WriteLn('OK');
 end;
 
@@ -131,5 +146,6 @@ begin
   TestRemovePrefix();
   TestRemovePostfix();
   TestTimes();
+  TestTimesWithOperator();
   TestCenter();
 end.

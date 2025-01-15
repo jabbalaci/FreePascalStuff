@@ -5,7 +5,9 @@ program JabbaUtilsDemo;
 // some demo, showing how to use the Jabba unit
 
 uses
-  ArrayUtils, JabbaUtils, sysutils;
+  ArrayUtils,
+  JabbaUtils,
+  sysutils;
   // JabbaUtils, sysutils;
 
 
@@ -34,9 +36,9 @@ begin
   strings := ['cat', 'dog', 'bird'];
   PrintArray(strings);
   WriteLn('---');
-  WriteLn('''', Read('text.txt'), '''');
+  WriteLn('''', ReadContent('text.txt'), '''');
   WriteLn('---');
-  lines := Readlines('text.txt');
+  lines := ReadLines('text.txt');
   for line in lines do
     WriteLn('''' + line + '''');
   WriteLn('---');
@@ -45,6 +47,8 @@ begin
   WriteLn('---');
   c := 'x';
   WriteLn(Times(c, 10));
+  WriteLn(c * 10);
+  WriteLn('AB' * 3);
   WriteLn('''' + Center('lac', 10) + '''');
 end;
 
