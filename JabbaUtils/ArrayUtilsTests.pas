@@ -6,7 +6,8 @@
 program ArrayUtilsTests;
 
 uses
-  ArrayUtils;
+  ArrayUtils,
+  JabbaTypes;
 
 procedure TestReverseOrder();
 var
@@ -161,6 +162,57 @@ begin
   WriteLn('OK');
 end;
 
+
+procedure TestMin();
+var
+  li: array of Integer;
+  was_exception: Boolean;
+  dummy: Integer = -1;
+begin
+  WriteLn('Running TestMin...');
+  li := [3, 2, 1, 7, 8];
+  Assert(Min(li) = 1);
+  li := [3, 2, 1, -7, 8];
+  Assert(Min(li) = -7);
+  li := [];
+  was_exception := False;
+  try
+    Assert(Min(li) = dummy);
+  except
+    on E: EValueError do
+      begin
+        was_exception := True;
+      end;
+  end;
+  Assert(was_exception = True);
+  WriteLn('OK');
+end;
+
+procedure TestMax();
+var
+  li: array of Integer;
+  was_exception: Boolean;
+  dummy: Integer = -1;
+begin
+  WriteLn('Running TestMax...');
+  li := [3, 2, 1, 7, 8, 4];
+  Assert(Max(li) = 8);
+  li := [3, -2, 1, 99, 8];
+  Assert(Max(li) = 99);
+  li := [];
+  was_exception := False;
+  try
+    Assert(Max(li) = dummy);
+  except
+    on E: EValueError do
+      begin
+        was_exception := True;
+      end;
+  end;
+  Assert(was_exception = True);
+  WriteLn('OK');
+end;
+
 //---------------------------------------------------------------------------
 
 begin
@@ -174,4 +226,6 @@ begin
   TestArraysEqualInteger();
   TestConcatArraysInteger();
   TestConcatArraysString();
+  TestMin();
+  TestMax();
 end.

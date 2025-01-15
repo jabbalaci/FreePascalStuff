@@ -74,10 +74,10 @@ begin
   // If start < end, return the substring; otherwise, return empty string
   if actualStart < actualEnd then
     Result := Copy(s, actualStart + 1, actualEnd - actualStart)
-              // Adjust for 1-based indexing
+    // Adjust for 1-based indexing
   else
     Result := '';
-  // Return empty string for invalid slices
+    // Return empty string for invalid slices
 end;
 
 

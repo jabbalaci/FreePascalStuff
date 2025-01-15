@@ -47,9 +47,9 @@ begin
     Assert(ToDigit('x') = 9);
   except
     on E: EValueError do
-          begin
-            was_exception := True;
-          end;
+      begin
+        was_exception := True;
+      end;
   end;
   Assert(was_exception = True);
   WriteLn('OK');

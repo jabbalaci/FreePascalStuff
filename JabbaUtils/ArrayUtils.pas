@@ -7,7 +7,9 @@ unit ArrayUtils;
 interface
 
 uses
-  JabbaTypes, sysutils;
+  JabbaTypes,
+  sysutils;
+
 
 generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
 procedure PrintArray(const arr: array of Char; quote: Boolean = True); overload;
@@ -34,10 +36,13 @@ function ConcatArrays(const a, b: array of string): TStringArray; overload;
 function PySlice(const arr: TIntArray;
                  const startIndex: Integer;
                  const endIndex: Integer = MaxInt): TIntArray; overload;
+function Min(const arr: array of Integer): Integer;
+function Max(const arr: array of Integer): Integer;
 
 //---------------------------------------------------------------------------
 
 implementation
+
 
 generic procedure PrintArray<T>(const arr: array of T; quote: Boolean = False); overload;
 var
@@ -158,6 +163,33 @@ begin
   Result := 1;
   for i := Low(arr) to High(arr) do
     Result *= arr[i];
+end;
+
+
+function Min(const arr: array of Integer): Integer;
+var
+  i: Integer;
+begin
+  if Length(arr) = 0 then
+    raise EValueError.Create('EValueError: min()''s argument is empty');
+  // else:
+  Result := arr[0];
+  for i := 1 to High(arr) do
+    if arr[i] < Result then
+      Result := arr[i];
+end;
+
+function Max(const arr: array of Integer): Integer;
+var
+  i: Integer;
+begin
+  if Length(arr) = 0 then
+    raise EValueError.Create('EValueError: max()''s argument is empty');
+  // else:
+  Result := arr[0];
+  for i := 1 to High(arr) do
+    if arr[i] > Result then
+      Result := arr[i];
 end;
 
 

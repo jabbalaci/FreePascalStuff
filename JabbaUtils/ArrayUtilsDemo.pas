@@ -36,6 +36,9 @@ begin
   WriteLn('---');
   PrintArray(ConcatArrays([1, 2], [3, 4]));
   PrintArray(ConcatArrays(['one', 'two'], ['three', 'four']));
+  WriteLn('---');
+  WriteLn(Min(li));
+  WriteLn(Max(li));
 end;
 
 //---------------------------------------------------------------------------
