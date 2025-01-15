@@ -50,6 +50,8 @@ begin
   WriteLn(c * 10);
   WriteLn('AB' * 3);
   WriteLn('''' + Center('lac', 10) + '''');
+  WriteLn('---');
+  PrintArray(ReadLinesAsInts('numbers.txt'));
 end;
 
 //---------------------------------------------------------------------------

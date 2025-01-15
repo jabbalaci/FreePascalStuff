@@ -22,6 +22,7 @@ function ToDigit(const c: Char): Integer; overload;
 function ToDigit(const s: String): Integer; overload;
 function ReadContent(const FName: String; const trim: Boolean = True): String;
 function ReadLines(const FName: String): TStringArray;
+function ReadLinesAsInts(const FName: String): TIntArray;
 function RemovePrefix(const s, prefix: string): string;
 function RemovePostfix(const s, postfix: string): string;
 function Times(const s: String; const n: Integer): String;
@@ -140,6 +141,18 @@ begin
       idx += 1;
     end;
   CloseFile(F);
+end;
+
+function ReadLinesAsInts(const FName: String): TIntArray;
+var
+  line: String;
+begin
+  Result := [];
+  for line in ReadLines(FName) do
+    begin
+      SetLength(Result, Length(Result) + 1);
+      Result[High(Result)] := StrToInt(line);
+    end;
 end;
 
 
