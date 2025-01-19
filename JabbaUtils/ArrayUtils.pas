@@ -23,6 +23,9 @@ procedure ReverseOrder(var arr: array of String); overload;
 generic procedure SimpleSort<T>(var arr: array of T; const desc: Boolean = False); overload;
 procedure SimpleSort(var arr: array of Integer; const desc: Boolean = False); overload;
 procedure SimpleSort(var arr: array of String; const desc: Boolean = False); overload;
+generic function IsSorted<T>(const arr: array of T; const desc: Boolean = False): Boolean; overload;
+function IsSorted(const arr: array of Integer; const desc: Boolean = False): Boolean; overload;
+function IsSorted(const arr: array of String; const desc: Boolean = False): Boolean; overload;
 //
 function Sum(const arr: array of Integer): Int64;
 function Prod(const arr: array of Integer): Int64;
@@ -275,6 +278,43 @@ begin
   else
     Result := [];
   // Return empty array for invalid slices
+end;
+
+
+generic function IsSorted<T>(const arr: array of T; const desc: Boolean = False): Boolean; overload;
+var
+  i: Integer;
+begin
+  Result := True;  // default
+  if Length(arr) = 0 then
+    Exit(True);
+  // else:
+  if not desc then  // if ascending
+    begin
+      for i := 1 to High(arr) do
+        begin
+          if arr[i-1] > arr[i] then
+            Exit(False);
+        end;
+    end
+  else  // if descending
+    begin
+      for i := 1 to High(arr) do
+        begin
+          if arr[i-1] < arr[i] then
+            Exit(False);
+        end;
+    end;
+end;
+
+function IsSorted(const arr: array of Integer; const desc: Boolean = False): Boolean; overload;
+begin
+  Result := specialize IsSorted<Integer>(arr, desc);
+end;
+
+function IsSorted(const arr: array of String; const desc: Boolean = False): Boolean; overload;
+begin
+  Result := specialize IsSorted<String>(arr, desc);
 end;
 
 //---------------------------------------------------------------------------

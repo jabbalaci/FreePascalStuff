@@ -213,6 +213,44 @@ begin
   WriteLn('OK');
 end;
 
+procedure TestIsSortedInteger();
+var
+  li: array of Integer;
+begin
+  WriteLn('Running TestIsSortedInteger...');
+  li := [];
+  Assert(IsSorted(li) = True);
+  li := [3, 2, 1, 7, 8, 4];
+  Assert(IsSorted(li) = False);
+  li := [1, 2, 2, 6];
+  Assert(IsSorted(li) = True);
+  //
+  li := [3, 2, 1, -5];
+  Assert(IsSorted(li, True) = True);
+  li := [];
+  Assert(IsSorted(li, True) = True);
+  WriteLn('OK');
+end;
+
+procedure TestIsSortedString();
+var
+  li: array of String;
+begin
+  WriteLn('Running TestIsSortedString...');
+  li := [];
+  Assert(IsSorted(li) = True);
+  li := ['dd', 'cc', 'aa', 'bb'];
+  Assert(IsSorted(li) = False);
+  li := ['aa', 'cc', 'dd'];
+  Assert(IsSorted(li) = True);
+  //
+  li := ['gg', 'dd', 'cc', 'aa'];
+  Assert(IsSorted(li, True) = True);
+  li := [];
+  Assert(IsSorted(li, True) = True);
+  WriteLn('OK');
+end;
+
 //---------------------------------------------------------------------------
 
 begin
@@ -228,4 +266,6 @@ begin
   TestConcatArraysString();
   TestMin();
   TestMax();
+  TestIsSortedInteger();
+  TestIsSortedString();
 end.

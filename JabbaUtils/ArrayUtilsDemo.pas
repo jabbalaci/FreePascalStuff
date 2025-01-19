@@ -39,6 +39,9 @@ begin
   WriteLn('---');
   WriteLn(Min(li));
   WriteLn(Max(li));
+  WriteLn('---');
+  li := [4, 3, 2, 1];
+  WriteLn(IsSorted(li, True));
 end;
 
 //---------------------------------------------------------------------------
